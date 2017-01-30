@@ -19,6 +19,7 @@ Do the rebase:
 ```bash
 $ git checkout topic
 $ git rebase master
+$ git push --force # or -f
 ```
 
 New state:
@@ -74,4 +75,42 @@ $ git log --pretty=oneline 0.1.0...HEAD > /tmp/file.txt
 # Create the new tag
 $ git tag -a 0.1.1 -F /tmp/file.txt
 $ git push --tags
+```
+
+## Undo
+
+From [stackoverflow](http://stackoverflow.com/questions/927358/how-to-undo-last-commits-in-git).
+
+Current situation:
+
+```
+C [master][origin/master]
+|
+B
+|
+A
+```
+
+Undo last commit keeping the origin and the changed files:
+
+```bash
+$ git reset HEAD~1
+```
+
+New state:
+
+```
+W Uncommited changes
+| C [origin/master]
+|/
+B [master]
+|
+A
+```
+
+In `W` there are the same changes of `C` but uncommitted. If there is no need to keep `W`:
+
+```bash
+# Undo last commit and discard its changes
+$ git reset --hard HEAD~1
 ```
