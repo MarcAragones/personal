@@ -70,7 +70,7 @@ $ git tag
 # 0.1.0
 
 # Create a changelog from last tag 0.1.0
-$ git log --pretty=oneline 0.1.0...HEAD > /tmp/file.txt
+$ git log --oneline 0.1.0...HEAD > /tmp/file.txt
 
 # Create the new tag
 $ git tag -a 0.1.1 -F /tmp/file.txt
